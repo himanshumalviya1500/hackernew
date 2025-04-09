@@ -10,16 +10,6 @@ type Props = {
   searchParams: { query?: string; sort?: string; page?: number }
 }
 
-export async function generateMetadata(
-  { searchParams }: Props,
-  parent: ResolvingMetadata
-): Promise<Metadata> {
-  const query = searchParams.query
-  return {
-    title: `Search: ${query}`,
-  }
-}
-
 export default async function Page({ searchParams }: Props) {
   const query = searchParams.query
   if (!query) {

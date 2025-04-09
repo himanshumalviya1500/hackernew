@@ -1,4 +1,3 @@
-import { Metadata, ResolvingMetadata } from "next"
 import { notFound } from "next/navigation"
 
 import { storyNavConfig } from "@/config/conf"
@@ -7,16 +6,6 @@ import TypePage from "@/app/[type]/components/type-page"
 type Props = {
   params: { type: string }
   searchParams: { [key: string]: string | string[] | undefined }
-}
-
-export async function generateMetadata(
-  { params, searchParams }: Props,
-  parent: ResolvingMetadata
-): Promise<Metadata> {
-  const type = params.type
-  return {
-    title: `${type.charAt(0).toUpperCase() + type.slice(1)}`,
-  }
 }
 
 export default async function Page({ searchParams, params }: Props) {

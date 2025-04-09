@@ -2,12 +2,6 @@ import { Metadata } from "next"
 
 import AuthPage from "../components/auth-page"
 
-export async function generateMetadata(): Promise<Metadata> {
-  return {
-    title: "Login",
-  }
-}
-
 export default function Page({
   searchParams,
 }: {

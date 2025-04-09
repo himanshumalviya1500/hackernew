@@ -4,20 +4,15 @@ import { useState } from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { useGoto } from "@/hooks"
-import { LogOut, Menu, Plus, X } from "lucide-react"
+import { Menu, Plus, X } from "lucide-react"
 
 import { showStoryNav } from "@/config/conf"
 import { logoutAction } from "@/lib/actions"
 import { HnUser } from "@/lib/hn-types"
-import { cn } from "@/lib/utils"
-import { Button, buttonVariants } from "@/components/ui/button"
+import { Button } from "@/components/ui/button"
 import { DesktopNav } from "@/components/desktop-nav"
-import Logo from "@/components/logo"
 import MobileNav from "@/components/mobile-nav"
 import SearchInput from "@/components/search-input"
-import { UserNav } from "@/components/user-nav"
-
-import { Icons } from "./icons"
 
 export function Header({ user }: { user: HnUser | null }) {
   const pathname = usePathname()
