@@ -1,0 +1,51 @@
+# Node.js
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Next.js
+.next/
+out/
+.vercel/
+
+# Environment variables
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Build output
+dist/
+build/
+
+# Logs
+logs/
+*.log
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# IDE/editor folders
+.vscode/
+.idea/
+*.swp
+
+# Optional: Typescript
+*.tsbuildinfo
+
+# Optional: Coverage and testing
+coverage/
+jest.config.js
+playwright-report/
+
+# Optional: Local server settings
+*.local
+*.sublime-workspace
+
+# Optional: Mac system files
+.AppleDouble
+.LSOverride
