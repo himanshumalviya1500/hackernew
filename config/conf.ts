@@ -22,7 +22,3 @@ export const storyNavConfig = [
     type: HnStoryType.jobstories,
   },
 ]
-
-export const showStoryNav = (pathname: string) => {
-  return !["/login", "/signup"].includes(pathname)
-}

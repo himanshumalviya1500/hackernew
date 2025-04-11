@@ -23,11 +23,6 @@ export async function fetchStoryIds(type: HnStoryType) {
   }
 }
 
-export async function fetchUser(userId: string) {
-  const user = await fetchData(`user/${userId}`)
-  return safeUser(user)
-}
-
 export async function fetchItem(id: number) {
   const hnItem = await fetchData(`item/${id}`)
   return safeItem(hnItem)

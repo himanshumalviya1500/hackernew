@@ -56,18 +56,6 @@ export const hnItem2HnWebStory = (hnItem: HnItem) => {
   } as HnWebStory
 }
 
-export const getVoteState = (pathname: string, hideVote: boolean) => {
-  if (hideVote) {
-    if (["/jobs", "/user/favorites", "/user/submitted"].includes(pathname)) {
-      return "hidden"
-    } else {
-      return "invisible"
-    }
-  } else {
-    return "visiable"
-  }
-}
-
 export const hideVote = (type?: string) => {
   if (!type) {
     return false

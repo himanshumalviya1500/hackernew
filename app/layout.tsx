@@ -1,5 +1,3 @@
-import { fetchUser } from "@/lib/hn-api-fetcher"
-import { getCurrentUserId } from "@/lib/session"
 import { Toaster } from "@/components/ui/sonner"
 import { Header } from "@/components/header"
 import { ThemeProvider } from "@/components/theme-provider"
@@ -13,9 +11,6 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode
 }>) {
-  const userId = getCurrentUserId()
-  const user = userId ? await fetchUser(userId) : null
-
   return (
     <html lang="en" className="" suppressHydrationWarning>
       <body className="min-h-screen bg-white">
@@ -25,9 +20,9 @@ export default async function RootLayout({
           enableSystem={false}
           disableTransitionOnChange
         >
-          <CurrentUserProvider currentUser={user}>
+          <CurrentUserProvider>
             <div className="relative flex min-h-screen flex-col items-center">
-              <Header user={user} />
+              <Header />
               <main className="container flex flex-1 flex-col bg-[#F6F6EF] py-3 md:w-3/4">
                 {children}
               </main>

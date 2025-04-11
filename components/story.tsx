@@ -3,16 +3,12 @@
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 
-import { getVoteState } from "@/lib/hn-item-utils"
 import { HnWebStory } from "@/lib/hn-web-types"
 import { cn } from "@/lib/utils"
 import StoryBy from "@/components/story-by"
 import StoryCommentCount from "@/components/story-comment-count"
 import StoryPoint from "@/components/story-point"
 import StoryTime from "@/components/story-time"
-import Vote from "@/components/vote"
-
-import Fave from "./fave"
 
 type Props = {
   data: HnWebStory
@@ -34,13 +30,8 @@ export default function Story({
   hideFave = true,
 }: Props) {
   const pathname = usePathname()
-  const voteState = getVoteState(pathname, hideVote)
   return (
     <div className="flex flex-row border-b py-2 md:w-full">
-      {voteState === "visiable" && (
-        <Vote storyId={data.id} upvoted={data.upvoted} state="visiable" />
-      )}
-      {voteState === "invisible" && <div className="invisible">&#9650;</div>}
       <div>
         <div className="pl-1">
           <Link
@@ -73,7 +64,6 @@ export default function Story({
           {!hideCommentCount && data.comments && (
             <StoryCommentCount storyId={data.id} count={data.comments} />
           )}
-          {!hideFave && <Fave storyId={data.id} faved={true} />}
         </div>
       </div>
     </div>
