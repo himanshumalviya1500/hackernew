@@ -69,7 +69,7 @@ export default async function ItemList({
   }
 
   return (
-    <div className="px-2">
+    <div className="px-1">
       {stories.map((story, i) => (
         <div key={story.id} className="flex space-x-2">
           {null != offset ? (

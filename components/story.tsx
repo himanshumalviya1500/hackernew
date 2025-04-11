@@ -5,10 +5,8 @@ import { usePathname } from "next/navigation"
 
 import { HnWebStory } from "@/lib/hn-web-types"
 import { cn } from "@/lib/utils"
-import StoryBy from "@/components/story-by"
 import StoryCommentCount from "@/components/story-comment-count"
 import StoryPoint from "@/components/story-point"
-import StoryTime from "@/components/story-time"
 
 type Props = {
   data: HnWebStory
@@ -44,12 +42,14 @@ export default function Story({ data }: Props) {
             "flex flex-wrap gap-x-3 pl-1 text-sm text-muted-foreground md:space-x-4"
           }
         >
-          {<StoryPoint score={data.score} />}
-          {<StoryBy by={data.by} />}
-          {<StoryTime time={data.age} />}
-          {data.comments && (
-            <StoryCommentCount storyId={data.id} count={data.comments} />
-          )}
+          {
+            <StoryPoint
+              score={data.score}
+              by={data.by}
+              time={data.age}
+              count={data.comments}
+            />
+          }
         </div>
       </div>
     </div>

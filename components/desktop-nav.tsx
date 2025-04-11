@@ -13,23 +13,28 @@ export function DesktopNav({ className, ...props }: DesktopNavProps) {
 
   return (
     <div className={className} {...props}>
-      <nav className="flex items-center space-x-6 text-sm font-medium">
+      <nav className="flex flex-wrap items-center gap-x-3 gap-y-1 text-sm font-medium sm:text-xs md:text-sm">
         {storyNavConfig.map((navItem, index) => {
+          const isSelected =
+            pathname === navItem.link ||
+            (pathname === "/" && navItem.name === "top")
+
           return (
-            <Link
-              key={navItem.name}
-              href={navItem.link || ''}
-              prefetch={false}
-              className={cn(
-                "transition-colors hover:text-foreground/80 ",
-                pathname === navItem.link ||
-                  (pathname === "/" && navItem.name === "top")
-                  ? "text-foreground"
-                  : "text-foreground/50"
+            <div key={navItem.name} className="flex items-center gap-2">
+              <Link
+                href={navItem.link || ""}
+                prefetch={false}
+                className={cn(
+                  "whitespace-nowrap transition-colors",
+                  isSelected ? "text-white" : "text-black"
+                )}
+              >
+                {navItem.name}
+              </Link>
+              {index < storyNavConfig.length - 1 && (
+                <span className="text-black">|</span>
               )}
-            >
-              {navItem.name}
-            </Link>
+            </div>
           )
         })}
       </nav>
