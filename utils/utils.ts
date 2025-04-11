@@ -8,7 +8,7 @@ export function cn(...values: ClassValue[]) {
 
 export const generateUrl = (
   path: string,
-  searchParams: URLSearchParams | ReadonlyURLSearchParams
+  searchParams:  any
 ) => {
   const query = searchParams.toString()
   return `${path}${query ? `?${query}` : ""}`

@@ -5,8 +5,8 @@ import { navigationConfig } from "@/config/navigation"
 import { FeedContent } from "../components/feed-content"
 
 type Props = {
-  params: { type: string }
-  searchParams: { [key: string]: string | string[] | undefined }
+  params: any
+  searchParams: any
 }
 
 export default async function Page({ searchParams, params }: Props) {

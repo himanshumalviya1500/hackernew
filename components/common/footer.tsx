@@ -1,6 +1,7 @@
 import Link from "next/link"
 
 import { SearchInput } from "../stories/search-input"
+import { Suspense } from "react"
 
 export const Footer = () => {
   return (
@@ -76,7 +77,9 @@ export const Footer = () => {
             <label htmlFor="search" className="text-sm font-medium">
               Search:
             </label>
-            <SearchInput />
+            <Suspense fallback={<div>Loading search...</div>}>
+              <SearchInput />
+            </Suspense>
           </div>
         </div>
       </div>

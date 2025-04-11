@@ -7,7 +7,7 @@ import Loading from "@/components/ui/loading"
 import ItemList from "@/components/stories/item-list"
 
 type Props = {
-  searchParams: { query?: string; sort?: string; page?: string }
+  searchParams: any
 }
 
 export default async function SearchPage({ searchParams }: Props) {
@@ -41,7 +41,7 @@ async function SearchContent({
   sort?: string
   page: number
   limit: number
-  searchParams: { [key: string]: string | undefined }
+  searchParams: any
 }) {
   const data = await fetchSearchResults({
     query,
