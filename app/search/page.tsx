@@ -1,8 +1,8 @@
 import { Suspense } from "react"
 import { notFound } from "next/navigation"
+import { fetchSearchResults } from "@/utils/fetch-search-results"
+import { FeedItemType } from "@/utils/types"
 
-import { search } from "@/lib/hn-algolia-fetcher"
-import { HnItemType } from "@/lib/hn-types"
 import ItemList from "@/components/item-list"
 import Loading from "@/components/loading"
 
@@ -43,7 +43,7 @@ async function SearchResult({
   pageSize: number
   searchParams: { [key: string]: string | undefined }
 }) {
-  const result = await search({
+  const result = await fetchSearchResults({
     query,
     page,
     pageSize,
@@ -57,14 +57,14 @@ async function SearchResult({
   const searchItemList = result.hits.map((item: any) => ({
     id: item.story_id || item.objectID,
     deleted: false,
-    type: HnItemType.story,
+    type: FeedItemType.story,
     by: item.author,
     time: item.created_at_i,
     text: item.story_text,
     dead: false,
     parent: item.parent_id,
     url: item.url,
-    score: item.points,
+    score: item.formatPoints,
     title: item.title,
     descendants: item.num_comments,
   }))

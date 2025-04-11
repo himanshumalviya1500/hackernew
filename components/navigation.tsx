@@ -2,13 +2,13 @@
 
 import Link from "next/link"
 import { usePathname } from "next/navigation"
+import { cn } from "@/utils/utils"
 
 import { storyNavConfig } from "@/config/conf"
-import { cn } from "@/lib/utils"
 
 interface DesktopNavProps extends React.HTMLAttributes<HTMLDivElement> {}
 
-export function DesktopNav({ className, ...props }: DesktopNavProps) {
+export function Navigation({ className, ...props }: DesktopNavProps) {
   const pathname = usePathname()
 
   return (

@@ -1,4 +1,4 @@
-import { ago, commentCount, points } from "@/lib/hn-item-utils"
+import { formatComments, formatPoints, formatTimeAgo } from "@/utils/feed-utils"
 
 export default function StoryPoint({
   score,
@@ -16,15 +16,15 @@ export default function StoryPoint({
   }
   return (
     <div className="flex items-center justify-center gap-1 truncate">
-      <span>{typeof score === "string" ? score : points(score)} </span>
+      <span>{typeof score === "string" ? score : formatPoints(score)} </span>
       <div className="flex items-center justify-center truncate">by {by}</div>
-      <span>{typeof time === "string" ? time : ago(time)}</span>
+      <span>{typeof time === "string" ? time : formatTimeAgo(time)}</span>
       <span className="">|</span>
       {typeof count === "string"
         ? count
         : count == 0
           ? "discuss"
-          : commentCount(count)}
+          : formatComments(count)}
     </div>
   )
 }

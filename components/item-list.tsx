@@ -1,11 +1,11 @@
 import Link from "next/link"
+import { transformFeedItem } from "@/utils/feed-utils"
+import { FeedItem } from "@/utils/types"
 
-import { hnItem2HnWebStory } from "@/lib/hn-item-utils"
-import { HnItem } from "@/lib/hn-types"
 import Story from "@/components/story"
 
 export interface Props {
-  stories: HnItem[]
+  stories: FeedItem[]
   offset?: number
   currentPage?: number
   totalPages?: number
@@ -77,7 +77,7 @@ export default async function ItemList({
               {i + offset + 1}.
             </span>
           )}
-          <Story key={story.id} data={hnItem2HnWebStory(story)} />
+          <Story key={story.id} data={transformFeedItem(story)} />
         </div>
       ))}
 

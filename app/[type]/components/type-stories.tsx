@@ -1,5 +1,6 @@
-import { fetchStories, fetchStoryIds } from "@/lib/hn-api-fetcher"
-import { HnStoryType } from "@/lib/hn-types"
+import { getMultipleItems, getStoryIds } from "@/utils/fetch-data"
+import { FeedCategory } from "@/utils/types"
+
 import ItemList from "@/components/item-list"
 
 export default async function TypeStories({
@@ -8,18 +9,18 @@ export default async function TypeStories({
   page = 1,
 }: {
   page?: number | string
-  storyType: HnStoryType
+  storyType: FeedCategory
   pathname: string
 }) {
   const currentPage = typeof page === "string" ? parseInt(page, 10) : page
-  const pageSize = 10 
+  const pageSize = 10
 
-  const storyIds = await fetchStoryIds(storyType)
+  const storyIds = await getStoryIds(storyType)
   const totalPages = Math.ceil(storyIds.length / pageSize)
 
   const offset = (currentPage - 1) * pageSize
   const showStoryIds = storyIds.slice(offset, offset + pageSize)
-  const stories = await fetchStories(showStoryIds)
+  const stories = await getMultipleItems(showStoryIds)
 
   return (
     <ItemList

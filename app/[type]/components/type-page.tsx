@@ -1,6 +1,6 @@
 import { Suspense } from "react"
+import { FeedCategory } from "@/utils/types"
 
-import { HnStoryType } from "@/lib/hn-types"
 import ItemSkeleton from "@/components/item-skeleton"
 import TypeStories from "@/app/[type]/components/type-stories"
 
@@ -10,7 +10,7 @@ export default function TypePage({
   currentPage,
 }: {
   pathname: string
-  storyType: HnStoryType
+  storyType: FeedCategory
   currentPage: number
 }) {
   return (

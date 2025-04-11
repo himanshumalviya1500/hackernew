@@ -1,4 +1,5 @@
-import { HnStoryType } from "@/lib/hn-types"
+import { FeedCategory } from "@/utils/types"
+
 import TypePage from "@/app/[type]/components/type-page"
 
 export default function Page({
@@ -9,7 +10,7 @@ export default function Page({
   return (
     <TypePage
       pathname={""}
-      storyType={HnStoryType.topstories}
+      storyType={FeedCategory.top}
       currentPage={searchParams.page || 1}
     />
   )

@@ -1,8 +1,6 @@
 import { getAlgoliaApiUrl } from "@/config/urls"
 
-import { HnItem, HnItemType } from "./hn-types"
-
-export const search = async ({
+export const fetchSearchResults = async ({
   query,
   page,
   pageSize,

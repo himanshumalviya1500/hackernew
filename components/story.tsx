@@ -1,26 +1,23 @@
 "use client"
 
 import Link from "next/link"
-
-import { HnWebStory } from "@/lib/hn-web-types"
-import { cn } from "@/lib/utils"
+import { webStoryType } from "@/utils/types"
 
 import StoryPoint from "./story-point"
+import { cn } from "@/utils/utils"
 
 type Props = {
-  data: HnWebStory
+  data: webStoryType
 }
 
 export default function Story({ data }: Props) {
   return (
     <div className="flex w-full items-start gap-2 px-1">
-      <div className="w-4 cursor-pointer pt-1 text-center text-xs text-[#828282] sm:text-sm md:text-base">
+      <div className="w-4 cursor-pointer text-center text-xs text-[#828282] sm:text-sm md:text-base">
         &#9650;
       </div>
 
-      {/* Content column */}
       <div className="flex flex-1 flex-col">
-        {/* Title + site link */}
         <div className="flex flex-wrap items-baseline gap-x-1 text-xs leading-snug sm:text-sm md:text-base">
           <Link
             className={cn(
@@ -45,7 +42,6 @@ export default function Story({ data }: Props) {
           )}
         </div>
 
-        {/* Story meta */}
         <div className="flex flex-wrap gap-x-2 text-[10px] text-muted-foreground sm:text-xs md:text-sm">
           <StoryPoint
             score={data.score}

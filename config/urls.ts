@@ -1,10 +1,9 @@
 export const HN_WEB_BASE_URL =
-  process.env.NEXT_PUBLIC_HN_WEB_BASE_URL || "https://news.ycombinator.com"
+  process.env.NEXT_PUBLIC_HN_WEB_URL || "https://news.ycombinator.com"
 export const HN_API_BASE_URL =
-  process.env.NEXT_PUBLIC_HN_API_BASE_URL ||
-  "https://hacker-news.firebaseio.com/v0"
+  process.env.NEXT_PUBLIC_HN_API_URL || "https://hacker-news.firebaseio.com/v0"
 export const ALGOLIA_BASE_URL =
-  process.env.NEXT_PUBLIC_ALGOLIA_BASE_URL || "https://hn.algolia.com/api/v1"
+  process.env.NEXT_PUBLIC_HN_SEARCH_API_URL || "https://hn.algolia.com/api/v1"
 
 const removeEnd = (str: string, remove: string) => {
   if (!str) {

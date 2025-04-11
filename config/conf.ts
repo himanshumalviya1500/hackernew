@@ -1,24 +1,24 @@
-import { HnStoryType } from "@/lib/hn-types"
+import { FeedCategory } from "@/utils/types"
 
 export const storyNavConfig = [
   {
     name: "top",
     link: "/top",
-    type: HnStoryType.topstories,
+    type: FeedCategory.top,
   },
   {
     name: "best",
     link: "/best",
-    type: HnStoryType.beststories,
+    type: FeedCategory.best,
   },
   {
     name: "new",
     link: "/new",
-    type: HnStoryType.newstories,
+    type: FeedCategory.latest,
   },
   {
     name: "jobs",
     link: "/jobs",
-    type: HnStoryType.jobstories,
+    type: FeedCategory.jobs,
   },
 ]

@@ -2,7 +2,7 @@
 
 import Link from "next/link"
 
-import { DesktopNav } from "@/components/desktop-nav"
+import { Navigation } from "@/components/navigation"
 
 export function Header() {
   return (
@@ -16,7 +16,7 @@ export function Header() {
             <span className="text-base font-bold text-black">Hacker News</span>
           </Link>
 
-          <DesktopNav className="flex flex-wrap gap-x-2 text-xs sm:text-sm md:text-base" />
+          <Navigation className="flex flex-wrap gap-x-2 text-xs sm:text-sm md:text-base" />
         </div>
         <div className="flex items-center justify-end">
           <span className="text-black">login</span>
