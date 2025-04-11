@@ -1,6 +1,6 @@
 import { formatComments, formatPoints, formatTimeAgo } from "@/utils/feed-utils"
 
-export default function StoryPoint({
+export const StoryPoint = ({
   score,
   by,
   time,
@@ -10,7 +10,7 @@ export default function StoryPoint({
   by?: string
   time?: number | string
   count?: number | string
-}) {
+}) => {
   if (!score) {
     return null
   }

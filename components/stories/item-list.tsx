@@ -2,7 +2,7 @@ import Link from "next/link"
 import { transformFeedItem } from "@/utils/feed-utils"
 import { FeedItem } from "@/utils/types"
 
-import Story from "@/components/story"
+import { Story } from "@/components/stories/story"
 
 export interface Props {
   stories: FeedItem[]

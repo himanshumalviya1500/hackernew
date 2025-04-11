@@ -1,6 +1,6 @@
 import { FeedCategory } from "@/utils/types"
 
-import TypePage from "@/app/[type]/components/type-page"
+import { FeedContent } from "./components/feed-content"
 
 export default function Page({
   searchParams,
@@ -8,7 +8,7 @@ export default function Page({
   searchParams: { page: number }
 }) {
   return (
-    <TypePage
+    <FeedContent
       pathname={""}
       storyType={FeedCategory.top}
       currentPage={searchParams.page || 1}

@@ -2,15 +2,15 @@
 
 import Link from "next/link"
 import { webStoryType } from "@/utils/types"
-
-import StoryPoint from "./story-point"
 import { cn } from "@/utils/utils"
+
+import { StoryPoint } from "./story-point"
 
 type Props = {
   data: webStoryType
 }
 
-export default function Story({ data }: Props) {
+export const Story = ({ data }: Props) => {
   return (
     <div className="flex w-full items-start gap-2 px-1">
       <div className="w-4 cursor-pointer text-center text-xs text-[#828282] sm:text-sm md:text-base">

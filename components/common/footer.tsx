@@ -1,8 +1,8 @@
 import Link from "next/link"
 
-import SearchInput from "./search-input"
+import { SearchInput } from "../stories/search-input"
 
-export default function Footer() {
+export const Footer = () => {
   return (
     <footer className="mt-4 text-muted-foreground">
       <div className="border-t border-[#ff6600]"></div>

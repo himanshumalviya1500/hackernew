@@ -1,9 +1,9 @@
-import { Header } from "@/components/header"
-import { ThemeProvider } from "@/components/theme-provider"
+import { Header } from "@/components/common/header"
+import { ThemeProvider } from "@/components/common/theme-provider"
 
 import "./globals.css"
 
-import Footer from "@/components/footer"
+import { Footer } from "@/components/common/footer"
 
 export default async function RootLayout({
   children,

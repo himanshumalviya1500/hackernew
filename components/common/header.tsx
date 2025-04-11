@@ -2,9 +2,9 @@
 
 import Link from "next/link"
 
-import { Navigation } from "@/components/navigation"
+import { Navigation } from "@/components/common/navigation"
 
-export function Header() {
+export const Header = () => {
   return (
     <header className="top-0 z-50 mt-2 w-full bg-[#FF6600] px-3 py-1">
       <div className="flex flex-wrap items-center justify-between gap-3">

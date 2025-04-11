@@ -8,7 +8,7 @@ import { navigationConfig } from "@/config/navigation"
 
 interface DesktopNavProps extends React.HTMLAttributes<HTMLDivElement> {}
 
-export function Navigation({ className, ...props }: DesktopNavProps) {
+export const Navigation = ({ className, ...props }: DesktopNavProps) => {
   const pathname = usePathname()
 
   return (

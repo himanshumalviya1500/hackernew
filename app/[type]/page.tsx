@@ -1,7 +1,8 @@
 import { notFound } from "next/navigation"
 
 import { navigationConfig } from "@/config/navigation"
-import TypePage from "@/app/[type]/components/type-page"
+
+import { FeedContent } from "../components/feed-content"
 
 type Props = {
   params: { type: string }
@@ -19,7 +20,7 @@ export default async function Page({ searchParams, params }: Props) {
     notFound()
   }
   return (
-    <TypePage
+    <FeedContent
       pathname={pathname}
       storyType={storyType}
       currentPage={currentPage}

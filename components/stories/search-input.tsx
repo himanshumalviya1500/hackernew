@@ -4,7 +4,7 @@ import { usePathname, useRouter, useSearchParams } from "next/navigation"
 
 import { Input } from "@/components/ui/input"
 
-export default function SearchInput() {
+export const SearchInput = () => {
   const searchParams = useSearchParams()
   const pathname = usePathname()
   const { replace, push } = useRouter()

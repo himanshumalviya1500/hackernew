@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button"
 
-export default function ErrorPage() {
+export const ErrorPage = () => {
   return (
     <div className="m-auto w-full">
       <div className="flex flex-col items-center justify-center space-y-6">

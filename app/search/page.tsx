@@ -3,58 +3,58 @@ import { notFound } from "next/navigation"
 import { fetchSearchResults } from "@/utils/fetch-search-results"
 import { FeedItemType } from "@/utils/types"
 
-import ItemList from "@/components/item-list"
-import Loading from "@/components/loading"
+import Loading from "@/components/ui/loading"
+import ItemList from "@/components/stories/item-list"
 
 type Props = {
   searchParams: { query?: string; sort?: string; page?: string }
 }
 
-export default async function Page({ searchParams }: Props) {
-  const query = searchParams.query
+export default async function SearchPage({ searchParams }: Props) {
+  const { query, sort, page: rawPage } = searchParams
   if (!query) notFound()
 
-  const page = parseInt(searchParams.page || "1")
-  const pageSize = 10
+  const page = parseInt(rawPage || "1")
+  const limit = 10
 
   return (
-    <Suspense key={`${query}_${page}_${pageSize}`} fallback={<Loading />}>
-      <SearchResult
+    <Suspense key={`${query}_${page}_${limit}`} fallback={<Loading />}>
+      <SearchContent
         query={query}
-        sort={searchParams.sort}
+        sort={sort}
         page={page}
-        pageSize={pageSize}
+        limit={limit}
         searchParams={searchParams}
       />
     </Suspense>
   )
 }
 
-async function SearchResult({
+async function SearchContent({
   query,
   sort,
   page,
-  pageSize,
+  limit,
   searchParams,
 }: {
   query: string
   sort?: string
   page: number
-  pageSize: number
+  limit: number
   searchParams: { [key: string]: string | undefined }
 }) {
-  const result = await fetchSearchResults({
+  const data = await fetchSearchResults({
     query,
     page,
-    pageSize,
+    pageSize: limit,
     tags: "story",
     sort,
   })
 
-  const totalHits = result?.nbHits || 0
-  const totalPages = Math.ceil(totalHits / pageSize)
+  const total = data?.nbHits || 0
+  const pages = Math.ceil(total / limit)
 
-  const searchItemList = result.hits.map((item: any) => ({
+  const stories = data.hits.map((item: any) => ({
     id: item.story_id || item.objectID,
     deleted: false,
     type: FeedItemType.story,
@@ -71,10 +71,10 @@ async function SearchResult({
 
   return (
     <ItemList
-      stories={searchItemList}
-      offset={(page - 1) * pageSize}
+      stories={stories}
+      offset={(page - 1) * limit}
       currentPage={page}
-      totalPages={totalPages}
+      totalPages={pages}
       pathname="search"
       searchParams={searchParams}
     />

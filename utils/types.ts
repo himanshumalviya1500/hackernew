@@ -10,7 +10,6 @@ export interface webStoryType {
   time: number
   comments: string
   dead: boolean
-  upvoted?: boolean
 }
 
 export enum FeedItemType {
@@ -27,14 +26,12 @@ export enum FeedCategory {
 
 export interface FeedItem {
   id: number
-  deleted?: boolean
   type?: FeedItemType
   by?: string
   time: number
   text?: string
   dead?: boolean
   parent?: number
-  poll?: number
   kids?: number[]
   url?: string
   score: number

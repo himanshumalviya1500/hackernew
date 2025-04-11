@@ -1,6 +1,6 @@
 import { Skeleton } from "@/components/ui/skeleton"
 
-export default function ItemSkeleton({ length }: { length: number }) {
+export const ItemSkeleton = ({ length }: { length: number }) => {
   return (
     <div className="pt-2">
       {Array.from({ length }).map((_, index) => {
