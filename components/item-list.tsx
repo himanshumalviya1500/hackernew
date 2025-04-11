@@ -7,16 +7,60 @@ import Story from "@/components/story"
 export interface Props {
   stories: HnItem[]
   offset?: number
-  moreLink?: string
+  currentPage?: number
+  totalPages?: number
+  pathname?: string
 }
 
 export default async function ItemList({
   stories,
   offset = 1,
-  moreLink,
+  currentPage = 1,
+  totalPages = 1,
+  pathname = "",
 }: Props) {
+  const createPageLink = (page: number) => {
+    const searchParams = new URLSearchParams()
+    searchParams.set("page", page.toString())
+    return `/${pathname}?${searchParams.toString()}`
+  }
+
+  const getPagination = () => {
+    const pages = []
+    if (totalPages <= 6) {
+      for (let i = 1; i <= totalPages; i++) pages.push(i)
+    } else {
+      if (currentPage <= 3) {
+        pages.push(1, 2, 3, 4, "...", totalPages - 1, totalPages)
+      } else if (currentPage >= totalPages - 2) {
+        pages.push(
+          1,
+          2,
+          "...",
+          totalPages - 3,
+          totalPages - 2,
+          totalPages - 1,
+          totalPages
+        )
+      } else {
+        pages.push(
+          1,
+          2,
+          "...",
+          currentPage - 1,
+          currentPage,
+          currentPage + 1,
+          "...",
+          totalPages - 1,
+          totalPages
+        )
+      }
+    }
+    return pages
+  }
+
   return (
-    <>
+    <div className="px-2">
       {stories.map((story, i) => (
         <div key={story.id} className="flex space-x-2">
           {null != offset ? (
@@ -25,21 +69,51 @@ export default async function ItemList({
             </span>
           ) : null}
           <Story key={story.id} data={hnItem2HnWebStory(story)} />
-          {/* <Story key={story.id} data={story} /> */}
         </div>
       ))}
-      <div className="pt-3">
-        {moreLink && (
+
+      <div className="flex flex-wrap items-center justify-center gap-2 pt-6 text-sm">
+        {currentPage > 1 && (
           <Link
-            className="text-sm underline"
-            href={moreLink}
-            prefetch={false}
-            scroll={true}
+            href={createPageLink(currentPage - 1)}
+            className="rounded-md border px-3 py-1 text-muted-foreground transition hover:bg-muted"
           >
-            More
+            ‹ Prev
+          </Link>
+        )}
+
+        {getPagination().map((page, index) =>
+          typeof page === "number" ? (
+            <Link
+              key={index}
+              href={createPageLink(page)}
+              className={`rounded-md border px-3 py-1 transition-colors duration-200 ${
+                page === currentPage
+                  ? "bg-black font-semibold text-white"
+                  : "text-muted-foreground hover:bg-muted"
+              }`}
+            >
+              {page}
+            </Link>
+          ) : (
+            <span
+              key={index}
+              className="select-none px-2 py-1 text-muted-foreground"
+            >
+              {page}
+            </span>
+          )
+        )}
+
+        {currentPage < totalPages && (
+          <Link
+            href={createPageLink(currentPage + 1)}
+            className="rounded-md border px-3 py-1 text-muted-foreground transition hover:bg-muted"
+          >
+            Next ›
           </Link>
         )}
       </div>
-    </>
+    </div>
   )
 }

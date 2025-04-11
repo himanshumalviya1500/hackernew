@@ -6,23 +6,28 @@ export default async function TypeStories({
   pathname,
   storyType,
   page = 1,
-  pageSize = 30,
 }: {
-  page?: number
-  pageSize?: number
+  page?: number | string
   storyType: HnStoryType
   pathname: string
 }) {
+  const currentPage = typeof page === "string" ? parseInt(page, 10) : page
+  const pageSize = 10
+
   const storyIds = await fetchStoryIds(storyType)
-  const limit = pageSize || 30
-  const offset = (page - 1) * limit
-  const showStoryIds = storyIds.slice(offset, offset + limit)
+  const totalPages = Math.ceil(storyIds.length / pageSize)
+
+  const offset = (currentPage - 1) * pageSize
+  const showStoryIds = storyIds.slice(offset, offset + pageSize)
   const stories = await fetchStories(showStoryIds)
 
-  const searchParams = new URLSearchParams()
-  searchParams.set("page", (+page + 1).toString())
-
-  const moreLink =
-    stories.length < limit ? "" : `/${pathname}?${searchParams.toString()}`
-  return <ItemList stories={stories} offset={offset} moreLink={moreLink} />
+  return (
+    <ItemList
+      stories={stories}
+      offset={offset}
+      currentPage={currentPage}
+      totalPages={totalPages}
+      pathname={pathname}
+    />
+  )
 }

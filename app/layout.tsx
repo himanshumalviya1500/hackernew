@@ -18,8 +18,8 @@ export default async function RootLayout({
           disableTransitionOnChange
         >
           <div className="relative flex min-h-screen flex-col items-center">
-            <Header />
-            <main className="container flex flex-1 flex-col bg-[#F6F6EF] py-3 md:w-3/4">
+            <main className="container flex flex-1 flex-col bg-[#F6F6EF] px-0 md:w-3/4">
+              <Header />
               {children}
             </main>
           </div>

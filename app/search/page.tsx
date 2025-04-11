@@ -55,7 +55,6 @@ async function SearchResult({
   return (
     <ItemList
       stories={searchItemList}
-      moreLink={moreLink}
       offset={(page - 1) * pageSize}
     />
   )
