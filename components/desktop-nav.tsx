@@ -23,7 +23,7 @@ export function DesktopNav({ className, ...props }: DesktopNavProps) {
               className={cn(
                 "transition-colors hover:text-foreground/80 ",
                 pathname === navItem.link ||
-                  (pathname === "/" && navItem.name === "Top")
+                  (pathname === "/" && navItem.name === "top")
                   ? "text-foreground"
                   : "text-foreground/50"
               )}

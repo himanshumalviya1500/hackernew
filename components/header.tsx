@@ -24,8 +24,8 @@ export function Header({ user }: { user: HnUser | null }) {
     <header className="top-0 z-50 flex flex w-full items-center bg-[#ff6600] px-2">
       <div className="flex flex-1 items-center space-x-1">
         <Link href="/" className="flex items-center">
-          <div className="mr-1 flex h-5 w-5 items-center justify-center bg-white">
-            <span className="text-sm font-bold text-[#ff6600]">Y</span>
+          <div className="mr-1 flex h-5 w-5 items-center justify-center">
+            <span className="text-sm font-bold text-white">Y</span>
           </div>
           <span className="font-bold text-black">Hacker News</span>
         </Link>

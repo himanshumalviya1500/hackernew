@@ -1,5 +1,5 @@
 import type { Config } from "tailwindcss"
-import { fontFamily } from "tailwindcss/defaultTheme"
+import defaultTheme from "tailwindcss/defaultTheme"
 
 const config = {
   content: ["./components/**/*.{ts,tsx}", "./app/**/*.{ts,tsx}"],
@@ -74,7 +74,7 @@ const config = {
         "caret-blink": "caret-blink 1.25s ease-out infinite",
       },
       fontFamily: {
-        sans: ["var(--font-sans)", ...fontFamily.sans],
+        sans: ["var(--font-sans)", ...defaultTheme.fontFamily.sans],
       },
     },
   },

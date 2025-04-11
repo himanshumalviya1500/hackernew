@@ -142,7 +142,7 @@ export const fave = async ({
   const faveResp = await postForm(getHnWebUrl("fave"), formData)
 }
 
-export const vote = ({
+export const vote = async ({
   acct,
   pw,
   id,

@@ -17,18 +17,18 @@ export default async function RootLayout({
   const user = userId ? await fetchUser(userId) : null
 
   return (
-    <html lang="en">
+    <html lang="en" className="" suppressHydrationWarning>
       <body className="min-h-screen bg-white">
         <ThemeProvider
           attribute="class"
-          defaultTheme="system"
-          enableSystem
+          defaultTheme="light"
+          enableSystem={false}
           disableTransitionOnChange
         >
           <CurrentUserProvider currentUser={user}>
             <div className="relative flex min-h-screen flex-col items-center">
               <Header user={user} />
-              <main className="bg-#F6F6EF container flex flex-1 flex-col py-3 md:w-3/4">
+              <main className="container flex flex-1 flex-col bg-[#F6F6EF] py-3 md:w-3/4">
                 {children}
               </main>
             </div>

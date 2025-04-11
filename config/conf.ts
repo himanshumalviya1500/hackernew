@@ -2,22 +2,22 @@ import { HnStoryType } from "@/lib/hn-types"
 
 export const storyNavConfig = [
   {
-    name: "Top",
+    name: "top",
     link: "/top",
     type: HnStoryType.topstories,
   },
   {
-    name: "New",
-    link: "/new",
-    type: HnStoryType.newstories,
-  },
-  {
-    name: "Best",
+    name: "best",
     link: "/best",
     type: HnStoryType.beststories,
   },
   {
-    name: "Jobs",
+    name: "new",
+    link: "/new",
+    type: HnStoryType.newstories,
+  },
+  {
+    name: "jobs",
     link: "/jobs",
     type: HnStoryType.jobstories,
   },
