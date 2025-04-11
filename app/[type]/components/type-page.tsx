@@ -25,7 +25,6 @@ export default function TypePage({
           pathname={pathname}
           page={currentPage}
           storyType={storyType}
-          pageSize={30}
         />
       </Suspense>
     </>

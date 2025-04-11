@@ -12,7 +12,7 @@ export default async function TypeStories({
   pathname: string
 }) {
   const currentPage = typeof page === "string" ? parseInt(page, 10) : page
-  const pageSize = 10
+  const pageSize = 10 
 
   const storyIds = await fetchStoryIds(storyType)
   const totalPages = Math.ceil(storyIds.length / pageSize)
