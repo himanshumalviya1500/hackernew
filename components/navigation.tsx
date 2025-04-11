@@ -4,7 +4,7 @@ import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { cn } from "@/utils/utils"
 
-import { storyNavConfig } from "@/config/conf"
+import { navigationConfig } from "@/config/navigation"
 
 interface DesktopNavProps extends React.HTMLAttributes<HTMLDivElement> {}
 
@@ -14,7 +14,7 @@ export function Navigation({ className, ...props }: DesktopNavProps) {
   return (
     <div className={className} {...props}>
       <nav className="flex flex-wrap items-center gap-x-3 gap-y-1 text-sm font-medium sm:text-xs md:text-sm">
-        {storyNavConfig.map((navItem, index) => {
+        {navigationConfig.map((navItem, index) => {
           const isSelected =
             pathname === navItem.link ||
             (pathname === "/" && navItem.name === "top")
@@ -31,7 +31,7 @@ export function Navigation({ className, ...props }: DesktopNavProps) {
               >
                 {navItem.name}
               </Link>
-              {index < storyNavConfig.length - 1 && (
+              {index < navigationConfig.length - 1 && (
                 <span className="text-black">|</span>
               )}
             </div>

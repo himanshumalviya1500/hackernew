@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation"
 
-import { storyNavConfig } from "@/config/conf"
+import { navigationConfig } from "@/config/navigation"
 import TypePage from "@/app/[type]/components/type-page"
 
 type Props = {
@@ -11,7 +11,7 @@ type Props = {
 export default async function Page({ searchParams, params }: Props) {
   const currentPage = Number(searchParams?.page) || 1
   const pathname = params.type || "top"
-  const navItem = storyNavConfig.filter(
+  const navItem = navigationConfig.filter(
     (navItem) => navItem.name.toLowerCase() === pathname
   )
   const storyType = navItem && navItem.length === 1 ? navItem[0].type : null

@@ -1,4 +1,4 @@
-import { getAlgoliaApiUrl } from "@/config/urls"
+import { getSearchApiUrl } from "@/config/endpoints"
 
 export const fetchSearchResults = async ({
   query,
@@ -21,7 +21,7 @@ export const fetchSearchResults = async ({
     queryParams.append("tags", tags)
   }
 
-  const url = getAlgoliaApiUrl(
+  const url = getSearchApiUrl(
     `/${sort === "byDate" ? "search_by_date" : "search"}?${queryParams.toString()}`
   )
 

@@ -1,6 +1,6 @@
 import { FeedCategory } from "@/utils/types"
 
-export const storyNavConfig = [
+export const navigationConfig = [
   {
     name: "top",
     link: "/top",

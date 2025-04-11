@@ -1,9 +1,9 @@
-import { getHnApiUrl } from "@/config/urls"
+import { getApiUrl } from "@/config/endpoints"
 
 import { FeedCategory, FeedItem } from "./types"
 
 async function loadData(endpoint: string) {
-  const response = await fetch(getHnApiUrl(`${endpoint}.json`), {
+  const response = await fetch(getApiUrl(`${endpoint}.json`), {
     next: {
       revalidate: 120,
     },
