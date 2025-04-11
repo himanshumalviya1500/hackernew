@@ -24,6 +24,7 @@ export default async function Page({ searchParams }: Props) {
         sort={searchParams.sort}
         page={page}
         pageSize={pageSize}
+        searchParams={searchParams}
       />
     </Suspense>
   )
@@ -34,11 +35,13 @@ async function SearchResult({
   sort,
   page,
   pageSize,
+  searchParams,
 }: {
   query: string
   sort?: string
   page: number
   pageSize: number
+  searchParams: { [key: string]: string | undefined }
 }) {
   const result = await search({
     query,
@@ -52,7 +55,7 @@ async function SearchResult({
   const totalPages = Math.ceil(totalHits / pageSize)
 
   const searchItemList = result.hits.map((item: any) => ({
-    id: item.story_id || item.objectID, 
+    id: item.story_id || item.objectID,
     deleted: false,
     type: HnItemType.story,
     by: item.author,
@@ -73,6 +76,7 @@ async function SearchResult({
       currentPage={page}
       totalPages={totalPages}
       pathname="search"
+      searchParams={searchParams}
     />
   )
 }

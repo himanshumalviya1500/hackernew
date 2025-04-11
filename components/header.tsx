@@ -3,6 +3,7 @@
 import { useState } from "react"
 import Link from "next/link"
 import { Menu, Plus, X } from "lucide-react"
+
 import { Button } from "@/components/ui/button"
 import { DesktopNav } from "@/components/desktop-nav"
 import MobileNav from "@/components/mobile-nav"
@@ -28,8 +29,7 @@ export function Header() {
           {mobileNavActive ? <X /> : <Menu />}
         </div>
         <div className="flex flex-1 items-center justify-end">
-          <span className="font-bold text-black">Search</span>
-          <SearchInput />
+          <span className="text-black">login</span>
           <Button variant={"ghost"} className="hidden size-8">
             <Link rel="noreferrer nofollow" href={"/submit"}>
               <Plus size={22}></Plus>

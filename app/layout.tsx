@@ -3,6 +3,8 @@ import { ThemeProvider } from "@/components/theme-provider"
 
 import "./globals.css"
 
+import Footer from "@/components/footer"
+
 export default async function RootLayout({
   children,
 }: Readonly<{
@@ -21,6 +23,7 @@ export default async function RootLayout({
             <main className="container flex flex-1 flex-col bg-[#F6F6EF] px-0 md:w-3/4">
               <Header />
               {children}
+              <Footer />
             </main>
           </div>
         </ThemeProvider>

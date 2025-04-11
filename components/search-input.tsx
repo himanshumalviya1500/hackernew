@@ -25,15 +25,15 @@ export default function SearchInput() {
   }
 
   return (
-    <div className="relative mx-1 flex-1 md:flex-initial">
+    <div className="relative w-48 flex-1 px-2 py-1">
       <SearchIcon
-        className="absolute left-2 top-1/2 -translate-y-1/2 text-muted-foreground"
+        className="absolute left-4 top-1/2 -translate-y-1/2 text-muted-foreground"
         size={14}
       />
       <Input
         defaultValue={searchParams.get("query") || ""}
         onKeyUp={handleKeyUp}
-        className="h-6 bg-white pl-8 text-sm shadow-none"
+        className="h-6 w-48 bg-white pl-8 text-sm shadow-none"
         placeholder="Search..."
       />
     </div>

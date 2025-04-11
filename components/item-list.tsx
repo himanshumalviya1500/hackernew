@@ -10,19 +10,28 @@ export interface Props {
   currentPage?: number
   totalPages?: number
   pathname?: string
+  searchParams?: { [key: string]: string | undefined } 
 }
-
 export default async function ItemList({
   stories,
   offset = 1,
   currentPage = 1,
   totalPages = 1,
   pathname = "",
+  searchParams
 }: Props) {
   const createPageLink = (page: number) => {
-    const searchParams = new URLSearchParams()
-    searchParams.set("page", page.toString())
-    return `/${pathname}?${searchParams.toString()}`
+    const params = new URLSearchParams()
+      if (searchParams) {
+      Object.entries(searchParams).forEach(([key, val]) => {
+        if (key !== "page" && val !== undefined) {
+          params.set(key, val)
+        }
+      })
+    }
+  
+    params.set("page", page.toString())
+    return `/${pathname}?${params.toString()}`
   }
 
   const getPagination = () => {
