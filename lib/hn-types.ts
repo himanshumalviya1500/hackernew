@@ -1,9 +1,6 @@
 export enum HnItemType {
   job = "job",
   story = "story",
-  comment = "comment",
-  poll = "poll",
-  pollopt = "pollopt",
 }
 
 export enum HnStoryType {
@@ -33,30 +30,6 @@ export interface HnItem {
 
 export interface HnComment extends HnItem {
   comments: HnComment[]
-}
-
-export interface HnUser {
-  about?: string
-  created: number
-  id: string
-  karma?: number
-  submitted?: number[]
-}
-
-export interface HnProfile {
-  id: string
-  hmac?: string
-  created?: string
-  karma?: string
-  about?: string
-  email?: string
-  showd?: string
-  nopro?: string
-  maxv?: string
-  mina?: string
-  delay?: string
-  authCode?: string
-  myself?: boolean
 }
 
 export interface HnSearchItem {

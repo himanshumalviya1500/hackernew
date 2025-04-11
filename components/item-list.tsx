@@ -1,12 +1,6 @@
 import Link from "next/link"
 
-import {
-  hideCommentCount,
-  hideScore,
-  hideUsername,
-  hideVote,
-  hnItem2HnWebStory,
-} from "@/lib/hn-item-utils"
+import { hnItem2HnWebStory } from "@/lib/hn-item-utils"
 import { HnItem } from "@/lib/hn-types"
 import Story from "@/components/story"
 
@@ -30,14 +24,7 @@ export default async function ItemList({
               {i + offset + 1}.
             </span>
           ) : null}
-          <Story
-            key={story.id}
-            data={hnItem2HnWebStory(story)}
-            hideVote={hideVote(story.type)}
-            hidePoints={hideScore(story.type)}
-            hideCommentCount={hideCommentCount(story.type)}
-            hideUsername={hideUsername(story.type)}
-          />
+          <Story key={story.id} data={hnItem2HnWebStory(story)} />
           {/* <Story key={story.id} data={story} /> */}
         </div>
       ))}

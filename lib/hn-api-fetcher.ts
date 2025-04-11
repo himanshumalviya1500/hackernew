@@ -1,6 +1,6 @@
 import { getHnApiUrl } from "@/config/urls"
 
-import { HnItem, HnStoryType, HnUser } from "./hn-types"
+import { HnItem, HnStoryType } from "./hn-types"
 
 async function fetchData(type: string) {
   const res = await fetch(getHnApiUrl(`${type}.json`), {
@@ -33,17 +33,6 @@ export function safeItem(val: HnItem) {
     val.url = val.url || ""
     val.kids = val.kids || []
     val.descendants = val.descendants || 0
-    return val
-  } else {
-    return null
-  }
-}
-
-export function safeUser(val: HnUser) {
-  if (val) {
-    val.about = val.about || ""
-    val.karma = val.karma || 0
-    val.submitted = val.submitted || []
     return val
   } else {
     return null

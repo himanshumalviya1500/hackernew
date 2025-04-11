@@ -3,8 +3,6 @@
 import { useState } from "react"
 import Link from "next/link"
 import { Menu, Plus, X } from "lucide-react"
-
-import { HnUser } from "@/lib/hn-types"
 import { Button } from "@/components/ui/button"
 import { DesktopNav } from "@/components/desktop-nav"
 import MobileNav from "@/components/mobile-nav"

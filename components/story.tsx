@@ -12,23 +12,9 @@ import StoryTime from "@/components/story-time"
 
 type Props = {
   data: HnWebStory
-  hideVote: boolean
-  hidePoints?: boolean
-  hideUsername?: boolean
-  hideAge?: boolean
-  hideCommentCount?: boolean
-  hideFave?: boolean
 }
 
-export default function Story({
-  data,
-  hideVote = false,
-  hidePoints = false,
-  hideUsername = false,
-  hideAge = false,
-  hideCommentCount = false,
-  hideFave = true,
-}: Props) {
+export default function Story({ data }: Props) {
   const pathname = usePathname()
   return (
     <div className="flex flex-row border-b py-2 md:w-full">
@@ -58,10 +44,10 @@ export default function Story({
             "flex flex-wrap gap-x-3 pl-1 text-sm text-muted-foreground md:space-x-4"
           }
         >
-          {!hidePoints && <StoryPoint score={data.score} />}
-          {!hideUsername && <StoryBy by={data.by} />}
-          {!hideAge && <StoryTime time={data.age} />}
-          {!hideCommentCount && data.comments && (
+          {<StoryPoint score={data.score} />}
+          {<StoryBy by={data.by} />}
+          {<StoryTime time={data.age} />}
+          {data.comments && (
             <StoryCommentCount storyId={data.id} count={data.comments} />
           )}
         </div>

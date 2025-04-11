@@ -1,6 +1,6 @@
-import { HnItem, HnItemType } from "./hn-types"
+import { HnItem } from "./hn-types"
 import { HnWebStory } from "./hn-web-types"
-import { inTwoWeeks, timeAgo } from "./time-utils"
+import { timeAgo } from "./time-utils"
 
 export const site = (url?: string) => {
   if (!url) {
@@ -38,10 +38,6 @@ const plural = (n: number, s: string) => {
   return s + (n === 0 || n > 1 ? "s" : "")
 }
 
-export const replyableStroy = (story: HnItem) => {
-  return story.type !== HnItemType.job && !story.dead && inTwoWeeks(story.time)
-}
-
 export const hnItem2HnWebStory = (hnItem: HnItem) => {
   return {
     id: hnItem.id,
@@ -54,32 +50,4 @@ export const hnItem2HnWebStory = (hnItem: HnItem) => {
     comments: commentCount(hnItem.descendants),
     dead: hnItem.dead,
   } as HnWebStory
-}
-
-export const hideVote = (type?: string) => {
-  if (!type) {
-    return false
-  }
-  return ["job"].includes(type)
-}
-
-export const hideScore = (type?: string) => {
-  if (!type) {
-    return false
-  }
-  return ["job"].includes(type)
-}
-
-export const hideUsername = (type?: string) => {
-  if (!type) {
-    return false
-  }
-  return ["job"].includes(type)
-}
-
-export const hideCommentCount = (type?: string) => {
-  if (!type) {
-    return false
-  }
-  return ["job"].includes(type)
 }
