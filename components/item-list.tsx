@@ -10,7 +10,7 @@ export interface Props {
   currentPage?: number
   totalPages?: number
   pathname?: string
-  searchParams?: { [key: string]: string | undefined } 
+  searchParams?: { [key: string]: string | undefined }
 }
 export default async function ItemList({
   stories,
@@ -18,18 +18,18 @@ export default async function ItemList({
   currentPage = 1,
   totalPages = 1,
   pathname = "",
-  searchParams
+  searchParams,
 }: Props) {
   const createPageLink = (page: number) => {
     const params = new URLSearchParams()
-      if (searchParams) {
+    if (searchParams) {
       Object.entries(searchParams).forEach(([key, val]) => {
         if (key !== "page" && val !== undefined) {
           params.set(key, val)
         }
       })
     }
-  
+
     params.set("page", page.toString())
     return `/${pathname}?${params.toString()}`
   }
@@ -71,12 +71,12 @@ export default async function ItemList({
   return (
     <div className="px-1">
       {stories.map((story, i) => (
-        <div key={story.id} className="flex space-x-2">
-          {null != offset ? (
-            <span className="min-w-7 pt-2 text-center text-muted-foreground">
+        <div key={story.id} className="flex items-start gap-1">
+          {offset != null && (
+            <span className="w-5 text-right text-sm text-muted-foreground sm:text-sm md:text-base">
               {i + offset + 1}.
             </span>
-          ) : null}
+          )}
           <Story key={story.id} data={hnItem2HnWebStory(story)} />
         </div>
       ))}

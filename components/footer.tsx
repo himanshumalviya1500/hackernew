@@ -4,17 +4,17 @@ import SearchInput from "./search-input"
 
 export default function Footer() {
   return (
-    <footer className="mt-4">
+    <footer className="mt-4 text-muted-foreground">
       <div className="border-t border-[#ff6600]"></div>
       <div className="bg-[#f6f6ef] py-4 text-center text-sm">
-        <div className="mb-2">
+        <div className="mb-2 text-[14px]">
           Join us for{" "}
           <Link href="https://www.ycombinator.com/ai" className="font-bold">
             AI Startup School
           </Link>{" "}
           this June 16-17 in San Francisco!
         </div>
-        <div className="mb-3">
+        <div className="mb-3 text-[12px]">
           <Link
             href="https://news.ycombinator.com/newsguidelines.html"
             className="hover:underline"
@@ -64,12 +64,15 @@ export default function Footer() {
             Apply to YC
           </Link>
           {" | "}
-          <Link href="mailto:hn@ycombinator.com" className="hover:underline">
+          <Link
+            href="mailto:hn@ycombinator.com"
+            className="text-black hover:underline"
+          >
             Contact
           </Link>
         </div>
         <div className="flex items-center justify-center">
-          <div className="flex items-center gap-2">
+          <div className="flex items-center">
             <label htmlFor="search" className="text-sm font-medium">
               Search:
             </label>
